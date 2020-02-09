@@ -1,0 +1,6 @@
+framework module QSTLib {
+  umbrella header "QSTLib-umbrella.h"
+
+  export *
+  module * { export * }
+}
