@@ -4,7 +4,7 @@ PODS:
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
-  - QSTLib (0.1.0)
+  - QSTLib (0.0.1)
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
-  QSTLib: b0f5d5ad84e8387c6c7d8e2ffc7726eb454f70dc
+  QSTLib: f5cb3a82dabec139b5c6f1465aeea43994f2e5e8
 
 PODFILE CHECKSUM: 2bc14c2f6ef539d4651e8a5cd880031a74feb57d
 

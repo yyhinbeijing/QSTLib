@@ -10,6 +10,8 @@
 #endif
 #endif
 
+#import "UIBezierPath+Weex.h"
+#import "UIDevice+MDF.h"
 
 FOUNDATION_EXPORT double QSTLibVersionNumber;
 FOUNDATION_EXPORT const unsigned char QSTLibVersionString[];
