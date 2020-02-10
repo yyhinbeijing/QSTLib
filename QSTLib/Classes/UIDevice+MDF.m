@@ -8,15 +8,11 @@
 
 #import "UIDevice+MDF.h"
 #include <sys/sysctl.h>
-//#import "AFNetworkReachabilityManager.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
-//#import "SSKeychain.h"
 #import <AdSupport/AdSupport.h>
 #include <net/if.h>
 #include <net/if_dl.h>
-//#import "LVMDevLogManager.h"
 
-//deviceId
 static NSString * kMDFDeviceId = nil;
 
 static NSString * const kMDFDeviceTokenKey = @"deviceToken";
@@ -70,46 +66,7 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
 
 - (MDFNetworkType)mdf_networkType
 {
-//    AFNetworkReachabilityStatus status = [[AFNetworkReachabilityManager sharedManager] networkReachabilityStatus];
-//    switch (status) {
-//        case AFNetworkReachabilityStatusUnknown: {
-            return MDFNetworkTypeOther;
-//            break;
-//        }
-//        case AFNetworkReachabilityStatusNotReachable: {
-//            return MDFNetworkTypeUnReachable;
-//            break;
-//        }
-//        case AFNetworkReachabilityStatusReachableViaWWAN: {
-//            CTTelephonyNetworkInfo *networkInfo = [[CTTelephonyNetworkInfo alloc] init];
-//            if ([networkInfo respondsToSelector:@selector(currentRadioAccessTechnology)]) {
-//                NSString *currRadioAccessTech = networkInfo.currentRadioAccessTechnology;
-//                if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyGPRS] ||
-//                    [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyEdge]) {
-//                    return MDFNetworkType2G;
-//                } else if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyWCDMA] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSDPA] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSUPA] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMA1x] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
-//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyeHRPD]) {
-//                    return MDFNetworkType3G;
-//                } else if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyLTE]) {
-//                    return MDFNetworkType4G;
-//                } else {
-//                    return MDFNetworkType4G;
-//                }
-//            }
-//            return MDFNetworkTypeOther;
-//            break;
-//        }
-//        case AFNetworkReachabilityStatusReachableViaWiFi: {
-//            return MDFNetworkTypeWifi;
-//            break;
-//        }
-//    }
+    return MDFNetworkTypeOther;
 }
 
 #pragma mark - deviceId -
@@ -143,8 +100,6 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
 - (NSString *)makeDeviceId {
     NSString *deviceId = [UIDevice createNewUUID];
     if (!deviceId) {
-        NSString *errMsg = [NSString stringWithFormat:@"device creat error!\n"];
-//        [[LVMDevLogManager sharedInstance] logInfoQuickWhenEnterBackground:errMsg];
         return @"";
     }
     return deviceId;
@@ -154,39 +109,14 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
     if ([deviceId length] < 1) {
         return;
     }
-    
     kMDFDeviceId = deviceId;
-//    [[MDFUserDefaults sharedInstance] setObject:deviceId forKey:kMDFUserDefaultUDIDKey];
     [self saveDeviceIdToKeychain:deviceId];
 }
 
 - (void)saveDeviceIdToKeychain:(NSString *)deviceId {
-//    BOOL hasKeychaniUDID = [[MDFUserDefaults sharedInstance] boolForKey:kMDFKeychainHasUDIDKey];
-//    if (hasKeychaniUDID) {
-//        return;
-//    }
-//
-//    NSError *error = nil;
-//    [SSKeychain setPassword:deviceId forService:kMDFKeychainUDIDService account:kMDFKeychainUDIDAccount error:&error];
-//    if (error) {
-//        NSString *errMsg = [NSString stringWithFormat:@"device save error:%@", error.description];
-//        [[LVMDevLogManager sharedInstance] logInfoQuickWhenEnterBackground:errMsg];
-//    } else {
-//        [[MDFUserDefaults sharedInstance] setBool:YES forKey:kMDFKeychainHasUDIDKey];
-//    }
-    
 }
 
 - (NSString *)readUUIDFromKeyChain:(NSError **)error {
-//    [SSKeychain setAccessibilityType:kSecAttrAccessibleAlways];
-//    NSString *deviceId = [SSKeychain passwordForService:kMDFKeychainUDIDService
-//                                      account:kMDFKeychainUDIDAccount
-//                                        error:error];
-//    if (*error != nil) {
-//        NSString *errMsg = [NSString stringWithFormat:@"device get error:%@\n", (*error).description];
-//        [[LVMDevLogManager sharedInstance] logInfoQuickWhenEnterBackground:errMsg];
-//        return nil;
-//    }
     return @"";
 }
 
@@ -271,13 +201,13 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
     return @"";
 }
 
-//- (NSString *)mdf_token {
-//  return [[MDFUserDefaults sharedInstance] stringForKey:kMDFDeviceTokenKey] ?: @"";
-//}
-//
-//- (void)mdf_saveToken:(NSString *)token {
-//  [[MDFUserDefaults sharedInstance] setString:token forKey:kMDFDeviceTokenKey];
-//}
+- (NSString *)mdf_token {
+  return [[NSUserDefaults standardUserDefaults] stringForKey:kMDFDeviceTokenKey] ?: @"";
+}
+
+- (void)mdf_saveToken:(NSString *)token {
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:kMDFDeviceTokenKey];
+}
 
 #pragma mark - Others
 
