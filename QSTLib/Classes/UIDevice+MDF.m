@@ -88,28 +88,28 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
 //                    [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyEdge]) {
 //                    return MDFNetworkType2G;
 //                } else if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyWCDMA] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSDPA] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSUPA] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMA1x] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
-                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyeHRPD]) {
-                    return MDFNetworkType3G;
-                } else if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyLTE]) {
-                    return MDFNetworkType4G;
-                } else {
-                    return MDFNetworkType4G;
-                }
-            }
-            return MDFNetworkTypeOther;
-            break;
-        }
-        case AFNetworkReachabilityStatusReachableViaWiFi: {
-            return MDFNetworkTypeWifi;
-            break;
-        }
-    }
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSDPA] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyHSUPA] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMA1x] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORev0] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevA] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyCDMAEVDORevB] ||
+//                          [currRadioAccessTech isEqualToString:CTRadioAccessTechnologyeHRPD]) {
+//                    return MDFNetworkType3G;
+//                } else if ([currRadioAccessTech isEqualToString:CTRadioAccessTechnologyLTE]) {
+//                    return MDFNetworkType4G;
+//                } else {
+//                    return MDFNetworkType4G;
+//                }
+//            }
+//            return MDFNetworkTypeOther;
+//            break;
+//        }
+//        case AFNetworkReachabilityStatusReachableViaWiFi: {
+//            return MDFNetworkTypeWifi;
+//            break;
+//        }
+//    }
 }
 
 #pragma mark - deviceId -
@@ -122,7 +122,7 @@ static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// ç”
         return kMDFDeviceId;
     }
 
-    NSString *deviceId = [[MDFUserDefaults sharedInstance] stringForKey:kMDFUserDefaultUDIDKey];
+    NSString *deviceId = [[NSUserDefaults standardUserDefaults] stringForKey:kMDFUserDefaultUDIDKey];
     if (deviceId.length) {
         kMDFDeviceId = deviceId;
         [self saveDeviceIdToKeychain:deviceId];
