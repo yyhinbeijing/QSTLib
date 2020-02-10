@@ -8,7 +8,7 @@
 
 #import "UIDevice+MDF.h"
 #include <sys/sysctl.h>
-#import "AFNetworkReachabilityManager.h"
+//#import "AFNetworkReachabilityManager.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 //#import "SSKeychain.h"
 #import <AdSupport/AdSupport.h>
