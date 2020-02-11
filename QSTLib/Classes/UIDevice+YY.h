@@ -1,5 +1,5 @@
 //
-//  UIDevice+MDF.h
+//  UIDevice+YY.h
 //  Aicow-iPhone
 //
 //  Created by yangyonghui on 16/2/14.
@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, MDFNetworkType) {
     MDFNetworkType4G,
 };
 
-@interface UIDevice (MDF)
+@interface UIDevice (YY)
 
 - (NSString *)mdf_networkTypeString;
 

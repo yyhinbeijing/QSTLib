@@ -7,11 +7,8 @@
 //
 
 #import "ACPickerViewController.h"
-#import "UIButton+lvmBtn.h"
-#import "NSDictionary+MDF.h"
-#import "NSArray+MDF.h"
-#import "LVMProductDetailTransition.h"
-#import "LVMProductDetailPresentationController.h"
+#import "Configure.h"
+#import "NSDate+MDF.h"
 
 #define MAXYEAR 2050
 #define MINYEAR 1900
@@ -66,14 +63,14 @@ static const CGFloat bottomViewHeight = 330;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.preferredContentSize = CGSizeMake(kMDFScreenWidth, viewHeight);
+    self.preferredContentSize = CGSizeMake(kYYScreenWidth, viewHeight);
     self.view.backgroundColor = RGBColor(0xffffff);
     [self.view addSubview:self.botomView];
     [self initArrAndsetDefaultData];
     CGFloat pickerLeftPadding = 16;
     CGFloat pickerRightPadding = 15;
     CGFloat pickTopPadding = 15;
-    UIPickerView *pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(pickerLeftPadding, pickTopPadding,kMDFScreenWidth - pickerLeftPadding - pickerRightPadding ,pickViewHeight + 5)];
+    UIPickerView *pickView = [[UIPickerView alloc] initWithFrame:CGRectMake(pickerLeftPadding, pickTopPadding,kYYScreenWidth - pickerLeftPadding - pickerRightPadding ,pickViewHeight + 5)];
     pickView.delegate = self;
     pickView.dataSource = self;
     pickView.backgroundColor = RGBColor(0xffffff);
@@ -83,7 +80,7 @@ static const CGFloat bottomViewHeight = 330;
     //滚动到默认的位置(即今天的时间)
     if (self.pickerViewType == PickerViewTyeDateComponent) {
         NSArray *indexArray = @[@(_yearIndex - 1),@(_monthIndex - 1),@(_dayIndex - 1)];
-        if ([[indexArray mdf_objectAtIndex:0] integerValue] < 0 || [[indexArray mdf_objectAtIndex:1] integerValue] < 0 || [[indexArray mdf_objectAtIndex:2] integerValue] < 0) {
+        if ([[indexArray objectAtIndex:0] integerValue] < 0 || [[indexArray objectAtIndex:1] integerValue] < 0 || [[indexArray objectAtIndex:2] integerValue] < 0) {
             NSDate *date = [NSDate date];
             _yearIndex = date.year-MINYEAR + 1;
              [self.pickerView selectRow:(_yearIndex - 1) > 0?(_yearIndex - 1):0 inComponent:0 animated:YES];
@@ -91,29 +88,35 @@ static const CGFloat bottomViewHeight = 330;
              [self.pickerView selectRow:date.day - 1 inComponent:2 animated:YES];
         }else{
             for (int i=0; i<indexArray.count; i++) {
-                [self.pickerView selectRow:[[indexArray mdf_objectAtIndex:i] integerValue] inComponent:i animated:YES];
+                [self.pickerView selectRow:[[indexArray objectAtIndex:i] integerValue] inComponent:i animated:YES];
             }
         }
     }
     
 // 取消按钮
     CGFloat cancelButtonWidth  = 64;
-    UIButton *cancelBtn = [UIButton lvm_buttonWithType:ButtonTypeBlackTextButtonWithOutBackGroundColor];
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [cancelBtn setBackgroundColor:[UIColor clearColor]];
+    [cancelBtn setTitleColor:RGBColor(0x1c1717) forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:RGBColor(0x8d8b8b) forState:UIControlStateHighlighted];
     cancelBtn.frame = CGRectMake(0, 0, cancelButtonWidth, 55);
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
-    cancelBtn.titleLabel.font = [UIFont mdf_lightPingFSCFontOfSize:17];
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:17];
     cancelBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [self.botomView addSubview:cancelBtn];
     [cancelBtn addTarget:self action:@selector(_cancelAction) forControlEvents:UIControlEventTouchUpInside];
     
     //确认按钮
     CGFloat sureButtonWidth = 64;
-    UIButton *sureButton = [UIButton lvm_buttonWithType:ButtonTypeBlackTextButtonWithOutBackGroundColor];
+    UIButton *sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+   [sureButton setBackgroundColor:[UIColor clearColor]];
+   [sureButton setTitleColor:RGBColor(0x1c1717) forState:UIControlStateNormal];
+   [sureButton setTitleColor:RGBColor(0x8d8b8b) forState:UIControlStateHighlighted];
     
     [self.botomView addSubview:sureButton];
-    sureButton.frame = CGRectMake(kMDFScreenWidth - sureButtonWidth , 0, sureButtonWidth, 55);
+    sureButton.frame = CGRectMake(kYYScreenWidth - sureButtonWidth , 0, sureButtonWidth, 55);
     [sureButton setTitle:@"确认" forState:UIControlStateNormal];
-    sureButton.titleLabel.font = [UIFont mdf_mediumPingFSCFontOfSize:17];
+    sureButton.titleLabel.font = [UIFont systemFontOfSize:17];
     sureButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
     [self.botomView addSubview:sureButton];
     [sureButton addTarget:self action:@selector(_sureButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -137,9 +140,9 @@ static const CGFloat bottomViewHeight = 330;
         return _botomView;
     }else{
         if (!self.navigationController) {
-           _botomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kMDFScreenWidth, bottomViewHeight)];
+           _botomView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kYYScreenWidth, bottomViewHeight)];
         }else{
-            _botomView = [[UIView alloc] initWithFrame:CGRectMake(0, kMDFNavigationAndStatusBarHeight, kMDFScreenWidth, bottomViewHeight)];
+            _botomView = [[UIView alloc] initWithFrame:CGRectMake(0, kYYNavigationAndStatusBarHeight, kYYScreenWidth, bottomViewHeight)];
         }
         return _botomView;
     }
@@ -177,31 +180,31 @@ static const CGFloat bottomViewHeight = 330;
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
     switch (self.pickerViewType) {
         case PickerViewTypeOneComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-            selectOneCompomentValue = [componentArr mdf_objectAtIndex:0];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+            selectOneCompomentValue = [componentArr objectAtIndex:0];
             return [componentArr count];
             break;
         }
         case PickerViewTypeTwoComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-             NSArray *dataArr = [componentArr mdf_objectAtIndex:component];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+             NSArray *dataArr = [componentArr objectAtIndex:component];
             if (component == 0) {
-               selectOneCompomentValue = [dataArr mdf_objectAtIndex:0];
+               selectOneCompomentValue = [dataArr objectAtIndex:0];
             }else{
-               selectTwoCompomentValue = [dataArr mdf_objectAtIndex:0];
+               selectTwoCompomentValue = [dataArr objectAtIndex:0];
             }
             return [dataArr count];
             break;
         }
         case PickerViewTypeThreeComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-             NSArray *dataArr = [componentArr mdf_objectAtIndex:component];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+             NSArray *dataArr = [componentArr objectAtIndex:component];
             if (component == 0) {
-                selectOneCompomentValue = [dataArr mdf_objectAtIndex:0];
+                selectOneCompomentValue = [dataArr objectAtIndex:0];
             }else if (component == 1){
-                selectTwoCompomentValue = [dataArr mdf_objectAtIndex:0];
+                selectTwoCompomentValue = [dataArr objectAtIndex:0];
             }else{
-                selectThreeComomentValue = [dataArr mdf_objectAtIndex:0];
+                selectThreeComomentValue = [dataArr objectAtIndex:0];
             }
             return [dataArr count];
             break;
@@ -242,7 +245,7 @@ static const CGFloat bottomViewHeight = 330;
     if (!customLabel) {
         customLabel = [[UILabel alloc] init];
         customLabel.textAlignment = NSTextAlignmentCenter;
-        customLabel.font = [UIFont mdf_mediumPingFSCFontOfSize:19];
+        customLabel.font = [UIFont systemFontOfSize:19];
         customLabel.textColor = [UIColor blackColor];
     }
     //设置文字的属
@@ -253,8 +256,8 @@ static const CGFloat bottomViewHeight = 330;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     switch (self.pickerViewType) {
         case PickerViewTypeOneComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-            selectOneCompomentValue =  [componentArr mdf_objectAtIndex:row];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+            selectOneCompomentValue =  [componentArr objectAtIndex:row];
             break;
         }
         case PickerViewTypeTwoComponent:
@@ -305,30 +308,30 @@ static const CGFloat bottomViewHeight = 330;
 - (NSString *)getComponentTitleInRow:(NSInteger)row inCompoment:(NSInteger)compoment{
     switch (self.pickerViewType) {
         case PickerViewTypeOneComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-            return [componentArr mdf_objectAtIndex:row];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+            return [componentArr objectAtIndex:row];
             break;
         }
         case PickerViewTypeTwoComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-            NSArray *compementInfoArr = [componentArr mdf_objectAtIndex:compoment];
-            return [compementInfoArr mdf_objectAtIndex:row];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+            NSArray *compementInfoArr = [componentArr objectAtIndex:compoment];
+            return [compementInfoArr objectAtIndex:row];
              break;
         }
         case PickerViewTypeThreeComponent:{
-            NSArray *componentArr = [[self.pickerViewDataDic allValues] mdf_objectAtIndex:0];
-            NSArray *compementInfoArr = [componentArr mdf_objectAtIndex:compoment];
-            return [compementInfoArr mdf_objectAtIndex:row];
+            NSArray *componentArr = [[self.pickerViewDataDic allValues] objectAtIndex:0];
+            NSArray *compementInfoArr = [componentArr objectAtIndex:compoment];
+            return [compementInfoArr objectAtIndex:row];
             break;
         }
         case PickerViewTyeDateComponent:{
             if (compoment == 0) {
-                return [_yearArray mdf_objectAtIndex:row];
+                return [_yearArray objectAtIndex:row];
             }else if (compoment == 1){
-                return [_monthArray mdf_objectAtIndex:row];
+                return [_monthArray objectAtIndex:row];
             }else{
                 [self daysfromYear:[self getYear] andMonth:_monthIndex];
-                return [_dayArray mdf_objectAtIndex:row];
+                return [_dayArray objectAtIndex:row];
             }
             break;
         }
@@ -412,19 +415,19 @@ static const CGFloat bottomViewHeight = 330;
 
 #pragma mark - UIViewControllerTransitioningDelegate
 
-- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {
-    LVMProductDetailPresentationController *vc = [[LVMProductDetailPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
-    return vc;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
-    LVMProductDetailTransition *transition = [[LVMProductDetailTransition alloc] initWithTransitionType:LVMAlertTransitionTypePresent];
-    return transition;
-}
-
-- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
-    LVMProductDetailTransition *transition = [[LVMProductDetailTransition alloc] initWithTransitionType:LVMAlertTransitionTypeDismiss];
-    return transition;
-}
+//- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {
+//    LVMProductDetailPresentationController *vc = [[LVMProductDetailPresentationController alloc] initWithPresentedViewController:presented presentingViewController:presenting];
+//    return vc;
+//}
+//
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+//    LVMProductDetailTransition *transition = [[LVMProductDetailTransition alloc] initWithTransitionType:LVMAlertTransitionTypePresent];
+//    return transition;
+//}
+//
+//- (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+//    LVMProductDetailTransition *transition = [[LVMProductDetailTransition alloc] initWithTransitionType:LVMAlertTransitionTypeDismiss];
+//    return transition;
+//}
 
 @end

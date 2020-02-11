@@ -1,12 +1,12 @@
 //
-//  UIDevice+MDF.m
+//  UIDevice+YY.m
 //  Aicow-iPhone
 //
 //  Created by yangyonghui on 16/2/14.
 //  Copyright © 2016年 Aicow. All rights reserved.
 //
 
-#import "UIDevice+MDF.h"
+#import "UIDevice+YY.h"
 #include <sys/sysctl.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import <AdSupport/AdSupport.h>
@@ -21,7 +21,7 @@ static NSString * const kMDFKeychainUDIDAccount = @"udid";
 static NSString * const kMDFUserDefaultUDIDKey = @"COM.Aicow.DEVICEID";
 static NSString * const kMDFKeychainHasUDIDKey = @"kMDFKeychainHasUDIDKey";// 用于标示，keyChain中是否有UDID
 
-@implementation UIDevice (MDF)
+@implementation UIDevice (YY)
 
 - (NSString *)mdf_networkTypeString
 {

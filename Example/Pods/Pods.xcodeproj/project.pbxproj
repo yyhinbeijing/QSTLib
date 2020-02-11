@@ -23,6 +23,11 @@
 		6EEFA31123F24C9A00033DFD /* ACPickerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EEFA30E23F24C9A00033DFD /* ACPickerViewController.h */; };
 		6EEFA31223F24C9A00033DFD /* ACPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEFA30F23F24C9A00033DFD /* ACPickerViewController.m */; };
 		6EEFA31323F24C9A00033DFD /* ReplaceMe.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEFA31023F24C9A00033DFD /* ReplaceMe.m */; };
+		6EEFA35423F2503400033DFD /* Configure.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EEFA35323F2503400033DFD /* Configure.h */; };
+		6EEFA35923F252F900033DFD /* NSDateFormatter+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEFA35523F252F900033DFD /* NSDateFormatter+YY.m */; };
+		6EEFA35A23F252F900033DFD /* NSDateFormatter+YY.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EEFA35623F252F900033DFD /* NSDateFormatter+YY.h */; };
+		6EEFA35B23F252F900033DFD /* NSDate+YY.h in Headers */ = {isa = PBXBuildFile; fileRef = 6EEFA35723F252F900033DFD /* NSDate+YY.h */; };
+		6EEFA35C23F252F900033DFD /* NSDate+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EEFA35823F252F900033DFD /* NSDate+YY.m */; };
 		7741E8571B879A4492AFA6B1C1A48C52 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
 		88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE35F81C954881204729C569018D98C0 /* FBSnapshotTestController.m */; };
 		8C80B6688163CDD5F37D410187345582 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
@@ -37,10 +42,10 @@
 		BC485941F5964D5D2EB507E7C9D14661 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD4ED544B638D07C7D755AF1C27116A /* Foundation.framework */; };
 		C49D52712466511E332C952834C81FE1 /* FBSnapshotTestCasePlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = D3067EAFD5B0A06885968D137840DB70 /* FBSnapshotTestCasePlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D04AAC8B22E4A4DC4F39891C4E52F251 /* UIImage+Diff.h in Headers */ = {isa = PBXBuildFile; fileRef = E354F8FD537351F26F7949B4EBFA5101 /* UIImage+Diff.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		D07CBF37B1A05E0D26636CBF02F61DEC /* UIDevice+MDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 227345764485F90EBAD9E485A9973F0B /* UIDevice+MDF.m */; };
+		D07CBF37B1A05E0D26636CBF02F61DEC /* UIDevice+YY.m in Sources */ = {isa = PBXBuildFile; fileRef = 227345764485F90EBAD9E485A9973F0B /* UIDevice+YY.m */; };
 		E0B8D095C732352C854D365B9E5B993D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CAA89EEF1039078430D7A886477E365 /* UIKit.framework */; };
 		E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */ = {isa = PBXBuildFile; fileRef = AD0B81AC7DF4855803A0FA70985F8A99 /* FBSnapshotTestCasePlatform.m */; };
-		E9288605A93C246BFDC48029A744AC79 /* UIDevice+MDF.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+MDF.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9288605A93C246BFDC48029A744AC79 /* UIDevice+YY.h in Headers */ = {isa = PBXBuildFile; fileRef = DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+YY.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		F1AAAE00BB32B733B238E2B4E8424506 /* UIImage+Compare.h in Headers */ = {isa = PBXBuildFile; fileRef = A25844C26701FA4BCAEF64150B56777F /* UIImage+Compare.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		F31C3425129012E02AB5E925D33FC8F0 /* UIBezierPath+Weex.m in Sources */ = {isa = PBXBuildFile; fileRef = FDDB1B3166CC196FBA38179FF4708701 /* UIBezierPath+Weex.m */; };
 		F720FAF13A108CE6901E0A8B0580E1E8 /* FBSnapshotTestCase-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E621F768263424D9C5C35D58513625CB /* FBSnapshotTestCase-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,7 +81,7 @@
 		13C8BBFE2D9E3A9C566221B1DE04E91C /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		14C50B101CBF495809BC728064C67AA9 /* Pods-QSTLib_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QSTLib_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1B8ABEEA76ECDF1975B6D0787700F929 /* FBSnapshotTestCase-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FBSnapshotTestCase-Info.plist"; sourceTree = "<group>"; };
-		227345764485F90EBAD9E485A9973F0B /* UIDevice+MDF.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+MDF.m"; path = "QSTLib/Classes/UIDevice+MDF.m"; sourceTree = "<group>"; };
+		227345764485F90EBAD9E485A9973F0B /* UIDevice+YY.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+YY.m"; path = "QSTLib/Classes/UIDevice+YY.m"; sourceTree = "<group>"; };
 		27C8B5B2EC31534A92514438BE2B837F /* QSTLib-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "QSTLib-prefix.pch"; sourceTree = "<group>"; };
 		27CA85FFE7C715A35183902F8DF0FCA3 /* Pods-QSTLib_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-QSTLib_Tests.modulemap"; sourceTree = "<group>"; };
 		302EFF29E8258E7C27D849FD642F3243 /* Pods-QSTLib_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-QSTLib_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -97,6 +102,11 @@
 		6EEFA30E23F24C9A00033DFD /* ACPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACPickerViewController.h; path = QSTLib/Classes/ACPickerViewController.h; sourceTree = "<group>"; };
 		6EEFA30F23F24C9A00033DFD /* ACPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACPickerViewController.m; path = QSTLib/Classes/ACPickerViewController.m; sourceTree = "<group>"; };
 		6EEFA31023F24C9A00033DFD /* ReplaceMe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ReplaceMe.m; path = QSTLib/Classes/ReplaceMe.m; sourceTree = "<group>"; };
+		6EEFA35323F2503400033DFD /* Configure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Configure.h; path = QSTLib/Classes/Configure.h; sourceTree = "<group>"; };
+		6EEFA35523F252F900033DFD /* NSDateFormatter+YY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDateFormatter+YY.m"; path = "QSTLib/Classes/NSDateFormatter+YY.m"; sourceTree = "<group>"; };
+		6EEFA35623F252F900033DFD /* NSDateFormatter+YY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDateFormatter+YY.h"; path = "QSTLib/Classes/NSDateFormatter+YY.h"; sourceTree = "<group>"; };
+		6EEFA35723F252F900033DFD /* NSDate+YY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+YY.h"; path = "QSTLib/Classes/NSDate+YY.h"; sourceTree = "<group>"; };
+		6EEFA35823F252F900033DFD /* NSDate+YY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+YY.m"; path = "QSTLib/Classes/NSDate+YY.m"; sourceTree = "<group>"; };
 		716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		717263C848F5BAA1E62A17279B114C3F /* Pods-QSTLib_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-QSTLib_Example-dummy.m"; sourceTree = "<group>"; };
 		746CC9C9E1B0E104CD1BA120C69A2526 /* FBSnapshotTestCase-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-prefix.pch"; sourceTree = "<group>"; };
@@ -121,7 +131,7 @@
 		D3067EAFD5B0A06885968D137840DB70 /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		DCB714A3CB947C936FC18F807B1ABFFD /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DE35F81C954881204729C569018D98C0 /* FBSnapshotTestController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestController.m; path = FBSnapshotTestCase/FBSnapshotTestController.m; sourceTree = "<group>"; };
-		DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+MDF.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+MDF.h"; path = "QSTLib/Classes/UIDevice+MDF.h"; sourceTree = "<group>"; };
+		DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+YY.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIDevice+YY.h"; path = "QSTLib/Classes/UIDevice+YY.h"; sourceTree = "<group>"; };
 		E0956940883830C651240E754E3ECC52 /* UIImage+Diff.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Diff.m"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.m"; sourceTree = "<group>"; };
 		E354F8FD537351F26F7949B4EBFA5101 /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
 		E621F768263424D9C5C35D58513625CB /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
@@ -274,13 +284,18 @@
 		8FFE755691C3F9B578E8901A03470EE0 /* QSTLib */ = {
 			isa = PBXGroup;
 			children = (
+				6EEFA35723F252F900033DFD /* NSDate+YY.h */,
+				6EEFA35823F252F900033DFD /* NSDate+YY.m */,
+				6EEFA35623F252F900033DFD /* NSDateFormatter+YY.h */,
+				6EEFA35523F252F900033DFD /* NSDateFormatter+YY.m */,
+				6EEFA35323F2503400033DFD /* Configure.h */,
 				6EEFA30E23F24C9A00033DFD /* ACPickerViewController.h */,
 				6EEFA30F23F24C9A00033DFD /* ACPickerViewController.m */,
 				6EEFA31023F24C9A00033DFD /* ReplaceMe.m */,
 				5714C844FB88882CA51A44AFFBDBC448 /* UIBezierPath+Weex.h */,
 				FDDB1B3166CC196FBA38179FF4708701 /* UIBezierPath+Weex.m */,
-				DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+MDF.h */,
-				227345764485F90EBAD9E485A9973F0B /* UIDevice+MDF.m */,
+				DFDF8220654473B070EA1AC2423F2DFF /* UIDevice+YY.h */,
+				227345764485F90EBAD9E485A9973F0B /* UIDevice+YY.m */,
 				D2F740B7C785FC6874E578085E9A8DC8 /* Pod */,
 				FC24319C08BEB23F88952CBEE9E74656 /* Support Files */,
 			);
@@ -388,7 +403,7 @@
 			files = (
 				A3EB3F439FA39779E9B96D5F2617307B /* QSTLib-umbrella.h in Headers */,
 				4C314B6AA1D53361C0C7655499FDCB77 /* UIBezierPath+Weex.h in Headers */,
-				E9288605A93C246BFDC48029A744AC79 /* UIDevice+MDF.h in Headers */,
+				E9288605A93C246BFDC48029A744AC79 /* UIDevice+YY.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,8 +418,11 @@
 				90142C6259374E18E640396A59AD379A /* FBSnapshotTestController.h in Headers */,
 				40039E0AF0D764360B1D4FC4F7950D2E /* UIApplication+StrictKeyWindow.h in Headers */,
 				F1AAAE00BB32B733B238E2B4E8424506 /* UIImage+Compare.h in Headers */,
+				6EEFA35B23F252F900033DFD /* NSDate+YY.h in Headers */,
+				6EEFA35A23F252F900033DFD /* NSDateFormatter+YY.h in Headers */,
 				D04AAC8B22E4A4DC4F39891C4E52F251 /* UIImage+Diff.h in Headers */,
 				B74CD6E6EBEA0B642776BCB37850415D /* UIImage+Snapshot.h in Headers */,
+				6EEFA35423F2503400033DFD /* Configure.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +588,7 @@
 			files = (
 				4BBA02637FB4AE597F2367C3C16F7E6B /* QSTLib-dummy.m in Sources */,
 				F31C3425129012E02AB5E925D33FC8F0 /* UIBezierPath+Weex.m in Sources */,
-				D07CBF37B1A05E0D26636CBF02F61DEC /* UIDevice+MDF.m in Sources */,
+				D07CBF37B1A05E0D26636CBF02F61DEC /* UIDevice+YY.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,9 +601,11 @@
 				6EEFA31223F24C9A00033DFD /* ACPickerViewController.m in Sources */,
 				E8AC509D18EBF21B1FEA909652A01108 /* FBSnapshotTestCasePlatform.m in Sources */,
 				88396E68DC05A379282F3B374F75F43C /* FBSnapshotTestController.m in Sources */,
+				6EEFA35923F252F900033DFD /* NSDateFormatter+YY.m in Sources */,
 				9D65089019D558E5A9661F2DCAD20313 /* SwiftSupport.swift in Sources */,
 				11C410135C7E89353B480AC8DE0BFB77 /* UIApplication+StrictKeyWindow.m in Sources */,
 				6EEFA31323F24C9A00033DFD /* ReplaceMe.m in Sources */,
+				6EEFA35C23F252F900033DFD /* NSDate+YY.m in Sources */,
 				2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */,
 				14AD81D52FAD9CF2C065C61FB00C3B4F /* UIImage+Diff.m in Sources */,
 				A525E29E0A8079B35B793D8A2B5FBDF2 /* UIImage+Snapshot.m in Sources */,
