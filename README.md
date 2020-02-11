@@ -22,7 +22,7 @@ pod 'QSTLib'
 
 ## Author
 
-yyhinbeijing, yangyonghui@secoo.com
+yyhinbeijing, youngswift@163.com
 
 ## License
 
